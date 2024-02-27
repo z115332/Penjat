@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Penjat</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="index.html.CSS.css">
+        <script src="index.js"></script>
+
+        <script>
+         var vides = 7;           
+        function Comprobar() {            
+            var lletra=document.getElementById("caracter").value;
+        
+            lletra= lletra.toLowerCase(); 
+        
+                switch (lletra) {
+
+                    case "à":
+                    case "á":
+                        lletra = "a";
+                        break;
+                    case "é":
+                    case "è":
+                        lletra = "e";
+                        break;
+                    case "ó":
+                    case "ò":
+                        lletra = "o";
+                        break;
+                    case "í":
+                    case "ì":
+                    case "ï":
+                        lletra = "i";
+                        break;
+                    case "ú":
+                    case "ù":
+                    case "ü":
+                        lletra = "u";
+                        break;
+                }
+                
+                    
+
+                if ((lletra >= "a") && (lletra <= "l") || (lletra == "ç") || (lletra == "ñ"))
+                {
+                    text = "Aquesta lletra es correcta";
+                    window.alert("És correcta");
+                    document.getElementById("paraula").innerHTML = document.getElementById("paraula").innerHTML+lletra;
+                }
+                
+                else
+                {
+                    text = "Aquesta lletra no es correcta";
+                    window.alert("És incorrecta");
+                    vides = vides - 1;
+                    document.getElementById("vides").innerHTML= "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + vides;
+                    document.getElementById("Lletres").innerHTML= document.getElementById("Lletres").innerHTML+lletra;
+                }
+            }
+
+        </script>
+    </head>
+
+    <body style="background-image: url('img/Desert.png');
+                 background-size:620px-460px; background-repeat: no-repeat" >
+                
+        <h1>Prototip Joc del Penjat </h1>
+  
+        
+        <input id="caracter" type="text" placeholder="Escriu una lletra minuscula" maxlength="1" />        
+        <button onclick="Comprobar()">comprobar</button>
+        
+        <p style="color: #87CEEB">
+
+        <h2 style="color: #FFFFFF Paraula /h2>
+        <p id="paraula">------</p>
+
+        <h2>Vides</h2>
+        <p id="vides">ㅤ      7</p>
+
+
+        <h2>Lletres</h2>
+        <p id="Lletres">-----</p>
+
+        <h4>Crèdits:<a href="https://prosselloe.wordpress.com/2022/12/04/joc-del-penjat-versio-%CE%B1-amb-imatges-i-sons/">prosselloe.wordpress.com</a></h4>
+
+
+
+     </body>
+
+
+
+
+
+</html>
+
+
+
