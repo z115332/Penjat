@@ -21,13 +21,13 @@ var paraulespistes = [1, 2, 0, 2, 2, 2, 1, 0, 2];
 
 //Escull una paraula aleatoriament
 
-var aleatori = Math.floor(Math.random() * paraules.lenght);
+var aleatori = Math.floor(Math.random() * paraules.length);
 var paraula = paraules[aleatori];
 var pista = pistes[paraulespistes[aleatori]];
 
 //Marcam cada lletra amb un "_"
 
-for (var i = 0; i < paraula.lenght; i++) {
+for (var i = 0; i < paraula.length; i++) {
     Paraula[i] = "_";
 };
 
@@ -78,8 +78,8 @@ alert("paraula");
 
         //Afegeix lletra a Paraula i actualitzam a pantalla
 
-        for (var i = pos; i < paraula.lenght; i++) {
-            window.alert(paraula[i]);
+        for (var i = pos; i < paraula.length; i++) {
+            // window.alert(paraula[i]);
             if (paraula[i] == lletra) {
                 Paraula[i] = lletra;
             }
@@ -89,7 +89,7 @@ alert("paraula");
     else if (((lletra >="a") && (lletra <="z")) ||
             (lletra=="ñ")||(lletra =="-") ||
             (lletra=="ç")||(lletra==".")){
-        document.getElementById("boom_cloud").play();
+        // document.getElementById("boom_cloud").play();
         Lletres[7 - vides] = lletra;
         document.getElementById("lletres").innerHTML = Lletres;
         
