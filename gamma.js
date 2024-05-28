@@ -233,16 +233,17 @@ document.getElementById("").innerHTML  =Idioma.
         // Recuperam de la base de dades els TextosGUI per tots els Idiomes
         alasql('ATTACH SQLITE DATABASE penjat("db/penjat.db"); USE penjat; \n\
                 SELECT * FROM TblTextosGUI;',
-             [], function(idiomes) {Print_Data(Idiomes = idiomes.pop());}
-        //   [], function(idiomes) {SQL_TblTextosGUI(IdIdioma, idiomes.pop());}
+          //   [], function(idiomes) {Print_Data(Idiomes = idiomes.pop());}
+             [], function(idiomes) {SQL_TblTextosGUI(IdIdioma, idiomes.pop());}
         );
+
         alasql('ATTACH SQLITE DATABASE penjat("db/penjat.db"); USE penjat; \n\
                 SELECT Paraula, Pista \n\
                 FROM TblParaules INNER JOIN TblPistes  \n\
                   ON TblParaules.IdPista = TblPistes.IdPista  \n\
-                WHERE TblParaules.IdIdioma = "' + IdIdioma + '";'
-        //    [], function(taula) {Print_Data(Taula = taula.pop());}
-           [], function(taula) {SQL_TblParaulesPistes(IdIdioma, taula.pop());}
+                WHERE TblParaules.IdIdioma = "' + IdIdioma + '";',
+               [], function(taula) {Print_Data(Taula = taula.pop());}
+          // [], function(taula) {SQL_TblParaulesPistes(Taula, taula.pop());}
         );
   } 
 
