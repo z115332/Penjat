@@ -122,6 +122,9 @@ const Taula_dft = [
         {"Paraula": "setze", "Pista": "Setze jutges d'un jutjat mengen fetge d'un penjat"}
     ];
     var Taula = Taula_dft;
+    
+var IdIdioma = "ca";  
+var Idiomes = TblTextosGUI;
 
 window.alert(Taula.lenght);
 aleatori = Math.floor(Math.random() * Taula.lenght);
@@ -190,7 +193,7 @@ function Comprobar() {
     }
 
     var pos = paraula.indexOf(lletra);
-alert("paraula");
+    alert("paraula");
     if ((pos != -1) && (lletra != ""))
     {
         //text = "Aquesta lletra es correcta";
@@ -322,13 +325,14 @@ function amaga() {
 function CanviarIdioma(Idioma) {
     
     window.alert("CanviIdioma");
+    /*
     if ((IdIdioma != "ca") && (IdIdioma != "es")) {
     document.getElementById("Idiomes").value = IdIdioma;
     }
-
+    */
 
 AlaWeb_SQLite(IdIdioma);
-Idioma = Idiomes.find(Idioma => Idioma.IdIdioma ==IdIdioma);
+Idioma = Idiomes.find(Idioma => Idioma.IdIdioma == IdIdioma);
 
 document.title =Idioma.Titol;
 /*
@@ -362,10 +366,11 @@ document.getElementById("Dita3").innerHTML  =Idioma.Dita3;
         // Recuperam de la base de dades els TextosGUI per tots els Idiomes
         alasql('ATTACH SQLITE DATABASE penjat("db/penjat.db"); USE penjat; \n\
                 SELECT * FROM TblTextosGUI;',
-             [], function(idiomes) {Print_Data(Idiomes = idiomes.pop());}
-        //     [], function(idiomes) {SQL_TblTextosGUI(IdIdioma, idiomes.pop());}
+           // [], function(idiomes) {Print_Data(Idiomes = idiomes.pop());}
+           [], function(idiomes) {SQL_TblTextosGUI(IdIdioma, idiomes.pop());}
         );
 
+        /*
         alasql('ATTACH SQLITE DATABASE penjat("db/penjat.db"); USE penjat; \n\
                 SELECT Paraula, Pista \n\
                 FROM TblParaules INNER JOIN TblPistes  \n\
@@ -374,6 +379,7 @@ document.getElementById("Dita3").innerHTML  =Idioma.Dita3;
                [], function(taula) {Print_Data(Taula = taula.pop());}
           // [], function(taula) {SQL_TblParaulesPistes(Taula, taula.pop());}
         );
+        */
   } 
 
 function SQL_TblTextosGUI (IdIdioma, TblTextosGUI) {
