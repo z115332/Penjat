@@ -204,15 +204,15 @@ function Comprobar() {
         // document.getElementById("paraula").innerHTML + lletra;
 
         //Afegeix lletra a Paraula i actualitzam a pantalla
-
-        for (var i = pos; i < paraula.length; i++) {
+        Paraula =[];
+        for (var i = 0; i < paraula.length; i++) {
             // window.alert(paraula[i]);
             if (paraula[i] == lletra) {
                 Paraula[i] = lletra;
             }
         }
-        document.getElementById("paraula").innerHTML = Paraula;
-    } 
+       
+     
     else if (((lletra >="a") && (lletra <="z")) ||
             (lletra=="ñ")||(lletra =="-") ||
             (lletra=="ç")||(lletra==".")){
@@ -325,17 +325,18 @@ function amaga() {
 function CanviarIdioma(Idioma) {
     
     window.alert("CanviIdioma");
-    /*
+    
     if ((IdIdioma != "ca") && (IdIdioma != "es")) {
     document.getElementById("Idiomes").value = IdIdioma;
     }
-    */
+    
+
 
 AlaWeb_SQLite(IdIdioma);
 Idioma = Idiomes.find(Idioma => Idioma.IdIdioma == IdIdioma);
 
 document.title =Idioma.Titol;
-/*
+
 document.getElementById("Versio").innerHTML  =Idioma.Versio;
 document.getElementById("lletres").placeholder  =Idioma.Input;
 document.getElementById("Paraula").innerHTML  =Idioma.Paraula;
@@ -352,9 +353,20 @@ document.getElementById("Dita_2").innerHTML  =Idioma.Dita + "2";
 document.getElementById("Dita2").innerHTML  =Idioma.Dita2;
 document.getElementById("Dita_3").innerHTML  =Idioma.Dita + "3";
 document.getElementById("Dita3").innerHTML  =Idioma.Dita3;
+
+if (Punts > 0) {
+        document.getElementById("Punts").innerHTML = Idioma.Puntuacio + " " + Punts;
+}
+
+/*
+
+window.alert("Nova paraula aleatòria / Nueva palabra aleatoria / New random word!")
+aleatori = Math.floor(Math.random() * Taula.lenght);
+paraula = Taula[aleatori].Paraula;
+pista = Taula[aleatori].Pista,
+
 */
 
-}
 
 // Funció per carregar la base de dades penjat.db
     function AlaWeb_SQLite(IdIdioma) {
@@ -391,6 +403,7 @@ function SQL_TblTextosGUI (IdIdioma, TblTextosGUI) {
     };
 }
 
+/*
        function Print_Data(res) {
         for (var i in res)
         {
@@ -402,5 +415,30 @@ function SQL_TblTextosGUI (IdIdioma, TblTextosGUI) {
               // document.getElementById("res").innerHTML += res[i][j] + ", ";
               window.alert("res[" + i + "][" +j + "] = " + res[i][j]);
              }
+             */
         }
+
+ /*
+        document.getElementById("paraula").innerHTML = Paraula;
+        for (var i = 0; i < Vides_dft - Vides; i++) {
+             Lletres[i] = "_";
+
+        document.getElementById("lletres").innerHTML = Lletres;
+        Vides = Vides_dft;
+
+        document.getElementById("vides").innerHTML =
+        "&nbsp;&nbsp;&nbsp;\n\
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + Vides;
+
+        if (IdIdioma_ant --"en") { IdIdioma_ant = "gb"; }
+        document.getElementById("bandera").src = "img/" +IdIdioma_ant + ".png";
+
+        IdIdioma_ant = IdIdioma;
+
+        if((IdIdioma != "ca") && (IdIdioma != "es")) {
+        if (IdIdioma == "en") { IdIdioma = "gb"; }
+        document.getElementById("gb").src = "img/" + IdIdioma + ".png";
+        }
+
+        */
     } 
