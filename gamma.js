@@ -106,7 +106,7 @@ const Idiomes_dft = [
             "Descansi": "Rest in peace - RIP!",
             "Puntuacio": "Score:"
         }
-    ]
+    ];
     var Idiomes = Idiomes_dft;
 
 const Taula_dft = [
@@ -122,7 +122,7 @@ const Taula_dft = [
         {"Paraula": "setze", "Pista": "Setze jutges d'un jutjat mengen fetge d'un penjat"}
     ];
     var Taula = Taula_dft;
-    
+   
 var IdIdioma = "ca";  
 var Idiomes = TblTextosGUI;
 
@@ -200,7 +200,7 @@ function Comprobar() {
 
         window.alert("És correcta");
 
-        //document.getElementById("paraula").innerHTML 
+        //document.getElementById("paraula").innerHTML
         // document.getElementById("paraula").innerHTML + lletra;
 
         //Afegeix lletra a Paraula i actualitzam a pantalla
@@ -211,22 +211,21 @@ function Comprobar() {
                 Paraula[i] = lletra;
             }
         }
-       
-     
+    }    
     else if (((lletra >="a") && (lletra <="z")) ||
             (lletra=="ñ")||(lletra =="-") ||
             (lletra=="ç")||(lletra==".")){
         // document.getElementById("boom_cloud").play();
         Lletres[7 - vides] = lletra;
         document.getElementById("lletres").innerHTML = Lletres;
-        
+       
         window.alert("És incorrecta");
         vides = vides - 1;
         MostrarIMG();
         document.getElementById("vides").innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + vides;
         //text = "Aquesta lletra no es correcta";
         //document.getElementById("Lletres").innerHTML = document.getElementById("Lletres").innerHTML + lletra;
-        
+       
     }
 
     if (vides <= 0) {
@@ -322,55 +321,50 @@ function amaga() {
 }
 
 
-function CanviarIdioma(Idioma) {
-    
-    window.alert("CanviIdioma");
-    
-    if ((IdIdioma != "ca") && (IdIdioma != "es")) {
-    document.getElementById("Idiomes").value = IdIdioma;
+    // Canviam els diferents literals de la GUI segons l'idioma
+    function CanviarIdioma(IdIdioma) {
+        if ((IdIdioma != "ca") && (IdIdioma != "es")) {
+            document.getElementById("Idiomes").value = IdIdioma;
+        }
+
+        AlaWeb_SQLite(IdIdioma);
+        Idioma = Idiomes.find(Idioma => Idioma.IdIdioma == IdIdioma);
+       
+        document.title = Idioma.Titol;
+
+        /*
+        document.getElementById("Versio").innerHTML  =Idioma.Versio;
+        document.getElementById("lletres").placeholder  =Idioma.Input;
+        document.getElementById("Paraula").innerHTML  =Idioma.Paraula;
+        document.getElementById("vides").innerHTML  =Idioma.Vides;
+        document.getElementById("Idiomes").innerHTML  =Idioma.Idiomes;
+        document.getElementById("comprovar").innerHTML  =Idioma.Comprovar;
+        document.getElementById("Crèdits").innerHTML  =Idioma.crèdits;
+        document.getElementById("URLpistes").innerHTML  =Idioma.URLpistes;
+        document.getElementById("Youtube").innerHTML  =Idioma.Youtube;
+        document.getElementById("Wikis").innerHTML  =Idioma.Wikis;
+        document.getElementById("Dita_1").innerHTML  =Idioma.Dita + "1";
+        document.getElementById("Dita1").innerHTML  =Idioma.Dita1;
+        document.getElementById("Dita_2").innerHTML  =Idioma.Dita + "2";
+        document.getElementById("Dita2").innerHTML  =Idioma.Dita2;
+        document.getElementById("Dita_3").innerHTML  =Idioma.Dita + "3";
+        document.getElementById("Dita3").innerHTML  =Idioma.Dita3;
+
+        if (Punts > 0) {
+                document.getElementById("Punts").innerHTML = Idioma.Puntuacio + " " + Punts;
+        }
+
+        window.alert("Nova paraula aleatòria / Nueva palabra aleatoria / New random word!")
+        aleatori = Math.floor(Math.random() * Taula.lenght);
+        paraula = Taula[aleatori].Paraula;
+        pista = Taula[aleatori].Pista,
+
+        */
     }
-    
 
-
-AlaWeb_SQLite(IdIdioma);
-Idioma = Idiomes.find(Idioma => Idioma.IdIdioma == IdIdioma);
-
-document.title =Idioma.Titol;
-
-document.getElementById("Versio").innerHTML  =Idioma.Versio;
-document.getElementById("lletres").placeholder  =Idioma.Input;
-document.getElementById("Paraula").innerHTML  =Idioma.Paraula;
-document.getElementById("vides").innerHTML  =Idioma.Vides;
-document.getElementById("Idiomes").innerHTML  =Idioma.Idiomes;
-document.getElementById("comprovar").innerHTML  =Idioma.Comprovar;
-document.getElementById("Crèdits").innerHTML  =Idioma.crèdits;
-document.getElementById("URLpistes").innerHTML  =Idioma.URLpistes;
-document.getElementById("Youtube").innerHTML  =Idioma.Youtube;
-document.getElementById("Wikis").innerHTML  =Idioma.Wikis;
-document.getElementById("Dita_1").innerHTML  =Idioma.Dita + "1";
-document.getElementById("Dita1").innerHTML  =Idioma.Dita1;
-document.getElementById("Dita_2").innerHTML  =Idioma.Dita + "2";
-document.getElementById("Dita2").innerHTML  =Idioma.Dita2;
-document.getElementById("Dita_3").innerHTML  =Idioma.Dita + "3";
-document.getElementById("Dita3").innerHTML  =Idioma.Dita3;
-
-if (Punts > 0) {
-        document.getElementById("Punts").innerHTML = Idioma.Puntuacio + " " + Punts;
-}
-
-/*
-
-window.alert("Nova paraula aleatòria / Nueva palabra aleatoria / New random word!")
-aleatori = Math.floor(Math.random() * Taula.lenght);
-paraula = Taula[aleatori].Paraula;
-pista = Taula[aleatori].Pista,
-
-*/
-
-
-// Funció per carregar la base de dades penjat.db
+    // Funció per carregar la base de dades penjat.db
     function AlaWeb_SQLite(IdIdioma) {
-        window.alert("AlaWeb_SQLite IdIdioma = '" + IdIdioma + "'");
+        // window.alert("AlaWeb_SQLite IdIdioma = '" + IdIdioma + "'");
         config = {
             locateFile: filename => `/dist/${filename}`
         };
@@ -378,11 +372,10 @@ pista = Taula[aleatori].Pista,
         // Recuperam de la base de dades els TextosGUI per tots els Idiomes
         alasql('ATTACH SQLITE DATABASE penjat("db/penjat.db"); USE penjat; \n\
                 SELECT * FROM TblTextosGUI;',
-           // [], function(idiomes) {Print_Data(Idiomes = idiomes.pop());}
-           [], function(idiomes) {SQL_TblTextosGUI(IdIdioma, idiomes.pop());}
+        //    [], function(idiomes) {Print_Data(Idiomes = idiomes.pop());}
+            [], function(idiomes) {SQL_TblTextosGUI(IdIdioma, idiomes.pop());}
         );
 
-        /*
         alasql('ATTACH SQLITE DATABASE penjat("db/penjat.db"); USE penjat; \n\
                 SELECT Paraula, Pista \n\
                 FROM TblParaules INNER JOIN TblPistes  \n\
@@ -391,8 +384,7 @@ pista = Taula[aleatori].Pista,
                [], function(taula) {Print_Data(Taula = taula.pop());}
           // [], function(taula) {SQL_TblParaulesPistes(Taula, taula.pop());}
         );
-        */
-  } 
+  }
 
 function SQL_TblTextosGUI (IdIdioma, TblTextosGUI) {
     Idiomes = TblTextosGUI;
@@ -403,8 +395,8 @@ function SQL_TblTextosGUI (IdIdioma, TblTextosGUI) {
     };
 }
 
-/*
-       function Print_Data(res) {
+    // Print data  
+    function Print_Data(res) {
         for (var i in res)
         {
            // console.log("row " + i);
@@ -415,8 +407,8 @@ function SQL_TblTextosGUI (IdIdioma, TblTextosGUI) {
               // document.getElementById("res").innerHTML += res[i][j] + ", ";
               window.alert("res[" + i + "][" +j + "] = " + res[i][j]);
              }
-             */
         }
+    }
 
  /*
         document.getElementById("paraula").innerHTML = Paraula;
@@ -440,5 +432,5 @@ function SQL_TblTextosGUI (IdIdioma, TblTextosGUI) {
         document.getElementById("gb").src = "img/" + IdIdioma + ".png";
         }
 
-        */
-    } 
+*/
+    

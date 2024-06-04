@@ -39,7 +39,7 @@
                         break;
                 }
 
-                if ((lletra >= "a") && (lletra <= "l") || (lletra == "ç") || (lletra == "ñ"))
+                if ((lletra >= "a") && (lletra <= "l") || (lletra == "ç") || (lletra == "ñ"));
                 {
                     text = "Aquesta lletra es correcta";
                     window.alert("És correcta");
@@ -55,13 +55,13 @@
                 }
 
                 if (vides <= 0) {
-                    window.alert("i has perdut")
+                    window.alert("i has perdut");
                     AturaTot();
                     
                 } else {
 
                     if (paraula.length >= 7) {
-                        window.alert("i has guanyat")
+                        window.alert("i has guanyat");
                         AturaTot();
                         
                     }

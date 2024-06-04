@@ -11,16 +11,23 @@ html
 
 h2{
     color: black    ;
+    
+    font-size: 200%;
+    text-align: center;
 }
 
 h1{
     
     color: black;
+    text-align: center;
+    font-size: 225%;
 }
 
 h4{
     
     color: black;
+    
+     font-size: 115%;
     
     
 }
@@ -28,15 +35,31 @@ h4{
 a {
     
     color: black;
+    text-align: center;
 }
 
 body {
    border:3px black;
    border-radius:22px;
+   text-align: center;
+    background-position: center;
+    background-color: black;
+    
+    
+    p {
+  border: 2px solid red;
+  border-radius: 5px;
+}
+
+   
+}
    
 }
 
 #Imatges {position:relative; top:-470px; left:550px; }
+
+
+
 
 
 
