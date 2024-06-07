@@ -6,6 +6,7 @@
 
 /* global Vides */
 
+
 var vides = 7;
 
 //Variables Globals.
@@ -66,7 +67,7 @@ function Comprobar() {
     }
 
     var pos = paraula.indexOf(lletra);
-alert("paraula");
+    alert("paraula");
     if ((pos != -1) && (lletra != ""))
     {
         //text = "Aquesta lletra es correcta";
@@ -193,4 +194,4 @@ function amaga() {
     document.getElementById("ahorcado_6").hidden = true;
 
 }
-            
+     

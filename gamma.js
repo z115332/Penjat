@@ -107,7 +107,9 @@ const Idiomes_dft = [
             "Puntuacio": "Score:"
         }
     ];
-    var Idiomes = Idiomes_dft;
+var Idiomes = Idiomes_dft;
+var Idioma = Idiomes.find(Idioma => Idioma.IdIdioma == IdIdioma);
+var IdIdioma = "ca"; 
 
 const Taula_dft = [
         // Deixam per defecte les paraules i pistes en Català
@@ -122,46 +124,36 @@ const Taula_dft = [
         {"Paraula": "setze", "Pista": "Setze jutges d'un jutjat mengen fetge d'un penjat"}
     ];
     var Taula = Taula_dft;
-   
-var IdIdioma = "ca";  
-var Idiomes = TblTextosGUI;
-
-window.alert(Taula.lenght);
-aleatori = Math.floor(Math.random() * Taula.lenght);
-paraula = Taula[aleatori].Paraula;
-pista = Taula[aleatori].Pista;
-window.alert("aleatori="  + aleatori + ", paraula=" + paraula + ", pista=" + pista);
-
+ 
 
 var vides = 7;
 
 //Variables Globals.
-
 var Paraula = [];
 var Lletres = ["_", "_", "_", "_", "_", "_", "_"];
 
 //Llista de paraules per al joc i les pistes associades
-
 var paraules = ["cordes", "fetge", "jutge", "força", "jutjat", "mengen", "penjat", "quinta", "setze"];
 var pistes = ["A la quinta forca", "A ca un penjat, no hi anomenis cordes", "Setze jutjes d'un jutjat mengen fetge d'un penjat"];
 var paraulespistes = [1, 2, 0, 2, 2, 2, 1, 0, 2];
 
 //Escull una paraula aleatoriament
-
 var aleatori = Math.floor(Math.random() * paraules.length);
 var paraula = paraules[aleatori];
 var pista = pistes[paraulespistes[aleatori]];
+   
+aleatori = Math.floor(Math.random() * Taula.lenght);
+paraula = Taula[aleatori].Paraula;
+pista = Taula[aleatori].Pista;
 
 //Marcam cada lletra amb un "_"
-
 for (var i = 0; i < paraula.length; i++) {
     Paraula[i] = "_";
 };
 
-
-
 function Comprobar() {
-
+    window.alert("Comprobar");
+    //window.alert("aleatori="  + aleatori + ", paraula=" + paraula + ", pista=" + pista);
     var lletra = document.getElementById("caracter").value;
 
     lletra = lletra.toLowerCase();
@@ -204,13 +196,14 @@ function Comprobar() {
         // document.getElementById("paraula").innerHTML + lletra;
 
         //Afegeix lletra a Paraula i actualitzam a pantalla
-        Paraula =[];
-        for (var i = 0; i < paraula.length; i++) {
-            // window.alert(paraula[i]);
+        // Paraula =[];
+        for (var i = pos; i < paraula.length; i++) {
+           //window.alert(paraula[i]);
             if (paraula[i] == lletra) {
                 Paraula[i] = lletra;
             }
         }
+        document.getElementById("paraula").innerHTML = Paraula;
     }    
     else if (((lletra >="a") && (lletra <="z")) ||
             (lletra=="ñ")||(lletra =="-") ||
@@ -354,13 +347,46 @@ function amaga() {
                 document.getElementById("Punts").innerHTML = Idioma.Puntuacio + " " + Punts;
         }
 
-        window.alert("Nova paraula aleatòria / Nueva palabra aleatoria / New random word!")
-        aleatori = Math.floor(Math.random() * Taula.lenght);
-        paraula = Taula[aleatori].Paraula;
-        pista = Taula[aleatori].Pista,
-
         */
+       
+         // Escull una nova paraula aleatòriament
+        window.alert("Nova paraula aleatòria / Nueva palabra aleatoria / New random word!");
+        aleatori = Math.floor(Math.random() * Taula.length);
+        paraula = Taula[aleatori].Paraula;
+        pista = Taula[aleatori].Pista;
+       
+        Paraula = [];
+        // Marcam cada lletra amb un "_"
+        for (var i = 0; i < paraula.length; i++) {
+            Paraula[i] = "_";
+        }
+        document.getElementById("paraula").innerHTML = Paraula;
+
+        for (var i = 0; i < Vides_dft - Vides; i++) {
+            Lletres[i] = "_";
+        }
+        document.getElementById("lletres").innerHTML = Lletres;
+
+        Vides = Vides_dft;    
+        document.getElementById("vides").innerHTML =
+                "&nbsp;&nbsp;&nbsp;\n\
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + Vides;
+
+        // AmagaForca();
+       
+        // Bandera de la paraula/pista
+        if (IdIdioma_ant == "en") { IdIdioma_ant = "gb"; }                                
+        document.getElementById("bandera").src = "img/" + IdIdioma_ant + ".png";                      
+        IdIdioma_ant = IdIdioma;
+       
+        // Bandera del textos de la GUI
+        if ((IdIdioma != "ca") && (IdIdioma != "es")) {
+            // Per a l'idioma "en = English" la bandera es la de "gb = Great Britain"  
+            if (IdIdioma == "en") { IdIdioma = "gb"; }                                
+            document.getElementById("gb").src = "img/" + IdIdioma + ".png";        
+        }
     }
+    
 
     // Funció per carregar la base de dades penjat.db
     function AlaWeb_SQLite(IdIdioma) {
