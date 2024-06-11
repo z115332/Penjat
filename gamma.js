@@ -407,8 +407,8 @@ function amaga() {
                 FROM TblParaules INNER JOIN TblPistes  \n\
                   ON TblParaules.IdPista = TblPistes.IdPista  \n\
                 WHERE TblParaules.IdIdioma = "' + IdIdioma + '";',
-               [], function(taula) {Print_Data(Taula = taula.pop());}
-          // [], function(taula) {SQL_TblParaulesPistes(Taula, taula.pop());}
+        //     [], function(taula) {Print_Data(Taula = taula.pop());}
+            [], function(taula) {SQL_TblParaulesPistes(Taula, taula.pop());}
         );
   }
 
