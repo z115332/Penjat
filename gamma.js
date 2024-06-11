@@ -142,7 +142,7 @@ var aleatori = Math.floor(Math.random() * paraules.length);
 var paraula = paraules[aleatori];
 var pista = pistes[paraulespistes[aleatori]];
    
-aleatori = Math.floor(Math.random() * Taula.lenght);
+aleatori = Math.floor(Math.random() * Taula.length);
 paraula = Taula[aleatori].Paraula;
 pista = Taula[aleatori].Pista;
 
